@@ -82,19 +82,19 @@ class currency_finder:
         amount = self.entry3.get()
                 
         url = "https://www.marketwatch.com/investing/currency/" + currency + second_currency + "?mod=search_symbol"
-        
+        # if the user doesn't select a currency
         if currency == "Sel" or second_currency == "Sel":
             return
-        
+        # currencies the same with no given amount
         elif currency == second_currency and (amount == "enter amount to convert" or amount == ""):    
             result = 1
-            
+        # same currencies with no amount
         elif currency == second_currency and (amount != "" or amount != "enter amount to convert"):
             result = amount
-
+        # checks if amount is an acceptable input and returns if not
         elif not amount.isnumeric() and not isfloat(amount) and amount != "" and amount != "enter amount to convert":
             return
-        
+        # if currencies selected and amount given
         elif amount != "" and amount != "enter amount to convert":
             soup = bs4.BeautifulSoup(requests.get(url).content, "html.parser")
             currency_data = soup.find("div", class_="intraday__data").find("bg-quote")
