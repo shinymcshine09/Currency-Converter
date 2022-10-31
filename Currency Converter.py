@@ -86,14 +86,14 @@ class currency_finder:
         if currency == "Sel" or second_currency == "Sel":
             return
         
-        elif not amount.isnumeric() and not isfloat(amount):
-            return
-        
         elif currency == second_currency and (amount == "enter amount to convert" or amount == ""):    
             result = 1
             
         elif currency == second_currency and (amount != "" or amount != "enter amount to convert"):
             result = amount
+
+        elif not amount.isnumeric() and not isfloat(amount) and amount != "" and amount != "enter amount to convert":
+            return
         
         elif amount != "" and amount != "enter amount to convert":
             soup = bs4.BeautifulSoup(requests.get(url).content, "html.parser")
