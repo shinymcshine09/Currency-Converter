@@ -1,2 +1,2 @@
 # Currency Converter
- Web scraper currency convertor in Python.
+ Web scraper currency converter in Python.
