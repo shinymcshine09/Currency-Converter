@@ -10,8 +10,10 @@ class currency_finder:
     """
     
     def __init__(self):
-        """Function that takes care of the GUI 
-        aspects of this programme."""
+        """
+        Function that takes care of the GUI 
+        aspects of this programme.
+        """
         
         self.root = Tk()
         
