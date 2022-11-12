@@ -42,7 +42,6 @@ class currency_finder:
          "BRL - Brazilian real",
          "SGD - Singapore dollar",
          "EGP - Egyptian pound",
-         "FKP - Falkland Islands pound",
          "HKD - Hong Kong dollar"]
 
         self.drop1 = OptionMenu(self.root, self.clicked1, *currrencies)
@@ -99,13 +98,15 @@ class currency_finder:
         # if currencies selected and amount given
         elif amount != "" and amount != "enter amount to convert":
             soup = bs4.BeautifulSoup(requests.get(url).content, "html.parser")
-            currency_data = soup.find("div", class_="intraday__data").find("bg-quote")
+            currency_data = soup.find("div", class_="intraday__data").find("span")
             result = float(currency_data.text) * int(float(amount))
+            print(result)
         
         else:
             soup = bs4.BeautifulSoup(requests.get(url).content, "html.parser")
-            currency_data = soup.find("div", class_="intraday__data").find("bg-quote")
+            currency_data = soup.find("div", class_="intraday__data").find("span")
             result = currency_data.text
+            print(result)
         
         self.text.insert("end-1c", round(float(result), 2))
     
