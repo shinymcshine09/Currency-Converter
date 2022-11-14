@@ -98,13 +98,13 @@ class currency_finder:
         # if currencies selected and amount given
         elif amount != "" and amount != "enter amount to convert":
             soup = bs4.BeautifulSoup(requests.get(url).content, "html.parser")
-            currency_data = soup.find("div", class_="intraday__data").find("span")
+            currency_data = soup.find("div", class_="intraday__data").find("bg-quote")
             result = float(currency_data.text) * int(float(amount))
             print(result)
         
         else:
             soup = bs4.BeautifulSoup(requests.get(url).content, "html.parser")
-            currency_data = soup.find("div", class_="intraday__data").find("span")
+            currency_data = soup.find("div", class_="intraday__data").find("bg-quote")
             result = currency_data.text
             print(result)
         
